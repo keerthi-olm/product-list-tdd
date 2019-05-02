@@ -37,4 +37,9 @@ describe('ProductListing', () => {
     const wrapper = shallow(<ProductListing />);
     expect(wrapper.find('div.no-products-loaded').length).toEqual(1);
   });
+    it('should render a div with class name product-card for each product in the fetched product json
+', () => {
+    const wrapper = shallow(<ProductListing />);
+    expect(wrapper.find('div.no-products-loaded').length).toEqual(1);
+  });
 });
