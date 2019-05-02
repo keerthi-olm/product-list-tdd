@@ -9,7 +9,9 @@ export default class  ProductListing extends React.Component  {
     return (
       
       <div className='product-listing'>
-    
+        <div className="page-title">
+          <h1>Flat screen tvs</h1>
+        </div>
       </div>
     )
   }

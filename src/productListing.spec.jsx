@@ -29,4 +29,8 @@ describe('ProductListing', () => {
     const wrapper = shallow(<ProductListing />);
     expect(wrapper.find('div.page-title').length).toEqual(1);
   });
+    it('should render a <section /> with class name products', () => {
+    const wrapper = shallow(<ProductListing />);
+    expect(wrapper.find('section.products').length).toEqual(1);
+  });
 });
