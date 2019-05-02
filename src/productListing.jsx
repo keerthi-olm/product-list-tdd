@@ -25,7 +25,6 @@ export default class  ProductListing extends React.Component  {
       this.setState({
       isLoaded: true,
       products: response.data.products});
-        console.error(response);
     } catch(error){
         console.error(error);
     }
@@ -41,7 +40,7 @@ export default class  ProductListing extends React.Component  {
           <h1>Flat screen tvs</h1>
         </div>
         <section className="products">
-          {!this.state.isLoaded&&<div className='no-products-loaded'></div>}
+          {!this.state.isLoaded && <div className='no-products-loaded'></div>}
           {this.state.isLoaded && products.map((product, i) => {return <Product product={product} key={i}/> })}
         </section>
       </div>
@@ -56,13 +55,11 @@ export class Product extends React.Component {
       product: props.product
     };
   }
-  componentWillReceiveProps(nextProps) {
-  
-  }
 render() {
 
-console.log(this.state.product);
-  return <div className='product-card'><span>{this.state.product.price[0]}</span><span>{this.state.product.title}</span>{this.state.product.productId}</div>
+  return <div className='product-card'>
+
+        </div>
 }
 
   

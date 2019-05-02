@@ -34,13 +34,22 @@ describe('ProductListing', () => {
     expect(wrapper.find('section.products').length).toEqual(1);
   });
   it('when no products are loaded a <div /> with class name no-products-loaded', () => {
+    //This test will run immedietly after the component is mounted. But will execute before the fetch occurs
     const wrapper = shallow(<ProductListing />);
     expect(wrapper.find('div.no-products-loaded').length).toEqual(1);
   });
     it('should render a div with class name product-card for each product in the fetched product json', async () => {
     const wrapper = mount(<ProductListing />);
-    await wait(wrapper, w => w.find('div.product-card').exists());
-    const numProducts= await FetchProductList();
-    expect(wrapper.find('div.product-card').length).toEqual(numProducts.data.products.length);
+    //This test will run  after the fetch. The wait will do and update after the fetch
+    await wait(wrapper, w => w.find('section.products div.product-card').exists());
+    const response= await FetchProductList();
+    expect(wrapper.find('section.products div.product-card').length).toEqual(response.data.products.length);
+  });
+    it('should render a div with class name product-image for each product in the fetched product json', async () => {
+    const wrapper = mount(<ProductListing />);
+    //This test will run  after the fetch. The wait will do and update after the fetch
+    await wait(wrapper, w => w.find('section.products div.product-card div.product-image').exists());
+    const response= await FetchProductList();
+    expect(wrapper.find('section.products div.product-card div.product-image').length).toEqual(response.data.products.length);
   });
 });
