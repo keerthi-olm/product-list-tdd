@@ -33,4 +33,8 @@ describe('ProductListing', () => {
     const wrapper = shallow(<ProductListing />);
     expect(wrapper.find('section.products').length).toEqual(1);
   });
+  it('when no products are loaded a <div /> with class name no-products-loaded', () => {
+    const wrapper = shallow(<ProductListing />);
+    expect(wrapper.find('div.no-products-loaded').length).toEqual(1);
+  });
 });
