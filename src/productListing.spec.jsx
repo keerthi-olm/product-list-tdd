@@ -21,8 +21,12 @@ const wait = (wrapper, predicate, timeout = 10) => {
 jest.mock("./services/fetchProductList");
 
 describe('ProductListing', () => {
-  it('should render a <div />', () => {
+  it('should render a <div /> with class name product-listing', () => {
     const wrapper = shallow(<ProductListing />);
-    expect(wrapper.find('div').length).toEqual(1);
+    expect(wrapper.find('div.product-listing').length).toEqual(1);
+  });
+  it('should render a <div /> with class name title', () => {
+    const wrapper = shallow(<ProductListing />);
+    expect(wrapper.find('div.page-title').length).toEqual(1);
   });
 });
