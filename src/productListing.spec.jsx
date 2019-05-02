@@ -37,9 +37,10 @@ describe('ProductListing', () => {
     const wrapper = shallow(<ProductListing />);
     expect(wrapper.find('div.no-products-loaded').length).toEqual(1);
   });
-    it('should render a div with class name product-card for each product in the fetched product json
-', () => {
-    const wrapper = shallow(<ProductListing />);
-    expect(wrapper.find('div.no-products-loaded').length).toEqual(1);
+    it('should render a div with class name product-card for each product in the fetched product json', async () => {
+    const wrapper = mount(<ProductListing />);
+    await wait(wrapper, w => w.find('div.product-card').exists());
+    const numProducts= await FetchProductList();
+    expect(wrapper.find('div.product-card').length).toEqual(numProducts.data.products.length);
   });
 });
