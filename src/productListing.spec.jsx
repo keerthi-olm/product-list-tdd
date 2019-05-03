@@ -67,8 +67,32 @@ describe('ProductListing', () => {
       expect(node.props().src).toEqual(response.data.products[index].picture);
       index++;
     });
-    
+
+  });
+    it('should render a div with class name product-info (with price and title )for each product in the fetched product json', async () => {
+    const wrapper = mount(<ProductListing />);
+    //This test will run  after the fetch. The wait will do and update after the fetch
+    await wait(wrapper, w => w.find('section.products div.product-card div.product-info').exists());
+    const response= await FetchProductList();
+    expect(wrapper.find('section.products div.product-card div.product-info').length).toEqual(response.data.products.length);
+    expect(wrapper.find('section.products div.product-card div.product-info .title').length).toEqual(response.data.products.length);
+    expect(wrapper.find('section.products div.product-card div.product-info .price').length).toEqual(response.data.products.length);
   });
 
+    it('Check correct price is being displayed', async () => {
+    const wrapper = mount(<ProductListing />);
+    //This test will run  after the fetch. The wait will do and update after the fetch
+    await wait(wrapper, w => w.find('section.products div.product-card div.product-info').exists());
+    const response= await FetchProductList();
+  
+    // expect(wrapper.find("img").at(1).props().src).toEqual(response.data.products[1].picture);
+    var index=0;
+     expect(wrapper.find('h6.price').length).toEqual(response.data.products.length);
+
+    wrapper.find('h6.price span').forEach((node) => {
+      expect(node.text()).toEqual(response.data.products[index].price);
+      index++;
+    });
+  });
 
 });
