@@ -52,4 +52,23 @@ describe('ProductListing', () => {
     const response= await FetchProductList();
     expect(wrapper.find('section.products div.product-card div.product-image').length).toEqual(response.data.products.length);
   });
+
+    it('Check image path of each product', async () => {
+    const wrapper = mount(<ProductListing />);
+    //This test will run  after the fetch. The wait will do and update after the fetch
+    await wait(wrapper, w => w.find('section.products div.product-card div.product-image').exists());
+    const response= await FetchProductList();
+  
+    // expect(wrapper.find("img").at(1).props().src).toEqual(response.data.products[1].picture);
+    var index=0;
+     expect(wrapper.find('img').length).toEqual(response.data.products.length);
+
+    wrapper.find('img').forEach((node) => {
+      expect(node.props().src).toEqual(response.data.products[index].picture);
+      index++;
+    });
+    
+  });
+
+
 });

@@ -56,7 +56,7 @@ export class Product extends React.Component {
     };
   }
 render() {
-
+console.log(this.state.product.picture);
   return <div className='product-card'>
           <div className="product-image">
             <img src={ this.state.product.picture } />
