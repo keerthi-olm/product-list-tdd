@@ -56,11 +56,15 @@ export class Product extends React.Component {
     };
   }
 render() {
-console.log(this.state.product.picture);
+
   return <div className='product-card'>
           <div className="product-image">
             <img src={ this.state.product.picture } />
           </div>
+      <div className="product-info">
+        <h5 className='title'>{ this.state.product.title }</h5>
+        <h6 className='price'>£<span>{ this.state.product.price }</span></h6>
+      </div>
         </div>
 }
 
