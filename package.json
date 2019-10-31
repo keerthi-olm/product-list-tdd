@@ -6,7 +6,7 @@
   "main": "src/index.js",
   "proxy": "https://api.johnlewis.com",
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.18.1",
     "cors": "2.8.5",
     "react": "16.8.3",
     "react-dom": "16.8.3",
